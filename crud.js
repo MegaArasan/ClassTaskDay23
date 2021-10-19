@@ -6,7 +6,7 @@ document.querySelector(".main").innerHTML = `
 <div class="user-form">
 <input class="add-user-name"placeholder="Enter your Name">
 <input class="add-user-avatar"placeholder="Enter your Profilr-pic url">
-<button onclick="adduser()">Add User</button>
+<button class="btn btn-success" onclick="adduser()"><i class="fas fa-user-plus"></i>Add User</button>
 
 </div>
 <section class="container"></section>`;
@@ -20,15 +20,15 @@ async function mock() {
   user.forEach((user) => {
     usercontainer.innerHTML += `
     <div class="data">
-    <img src="${user.avatar}" alt=${user.name}/>
+    <img src="${user.avatar}" alt="${user.name}"/>
     <div class="details">
     <h4>${user.name}</h4>
-    <button onClick="deleteUser(${user.id})">DELETE</button>
-    <button onclick="toggleEdit(${user.id})">Edit User</button>
+    <button class="btn btn-danger" onclick="deleteUser(${user.id})"><i class="fas fa-trash">DELETE</button>
+    <button class="btn btn-primary" onclick="toggleEdit(${user.id})"><i class="fas fa-user-edit">Edit User</button>
     <div class="edit-user-form edit-${user.id}">
-    <input value=${user.name} class="edit-${user.id}-user-name" placeholder="Enter your Name"/>
-     <input value=${user.avatar} class="edit-${user.id}-user-avatar" placeholder="Enter your profile pic url"/>
-     <button onclick="saveuser(${user.id})">Save</button>
+    <input value="${user.name}" class="edit-${user.id}-user-name" placeholder="Enter your Name"/>
+     <input value="${user.avatar}" class="edit-${user.id}-user-avatar" placeholder="Enter your profile pic url"/>
+     <button class="btn btn-success" onclick="saveuser(${user.id})">Save</button>
     </div>
     </div></div>`;
   });
@@ -65,10 +65,8 @@ function toggleEdit(userId) {
 }
 async function saveuser(userId) {
   console.log("updating.....", userId);
-  console.log(userName, userAvatar);
-  const userName = document.querySelector(".edit-${user.id}-user-name").value;
-  const userAvatar = document.querySelector(".edit-${user.id}-user-avatar")
-    .value;
+  const userName = document.querySelector(`.edit-${userId}-user-name`).value;
+  const userAvatar = document.querySelector(`.edit-${userId}-user-avatar`).value;
 
   const dataupdate = await fetch(
     "https://6166c53713aa1d00170a6755.mockapi.io/users/" + userId,
@@ -78,5 +76,6 @@ async function saveuser(userId) {
       body: JSON.stringify({ name: userName, avatar: userAvatar })
     }
   );
+  mock();
 }
-mock();
+
