@@ -6,7 +6,7 @@ document.querySelector(".main").innerHTML = `
 <div class="user-form">
 <input class="add-user-name"placeholder="Enter your Name">
 <input class="add-user-avatar"placeholder="Enter your Profilr-pic url">
-<button class="btn btn-success" onclick="adduser()"><i class="fas fa-user-plus"></i>Add User</button>
+<button class="btn btn-success" onclick="adduser()"><i class="fas fa-user-plus"></i> Add User</button>
 
 </div>
 <section class="container"></section>`;
@@ -23,8 +23,10 @@ async function mock() {
     <img src="${user.avatar}" alt="${user.name}"/>
     <div class="details">
     <h4>${user.name}</h4>
-    <button class="btn btn-danger" onclick="deleteUser(${user.id})"><i class="fas fa-trash">DELETE</button>
-    <button class="btn btn-primary" onclick="toggleEdit(${user.id})"><i class="fas fa-user-edit">Edit User</button>
+    
+    <button class="btn btn-danger" onclick="deleteUser(${user.id})"><i class="fas fa-trash"></i> Delete</button>
+    
+    <button class="btn btn-primary" onclick="toggleEdit(${user.id})"><i class="fas fa-user-edit"></i> Edit User</button>
     <div class="edit-user-form edit-${user.id}">
     <input value="${user.name}" class="edit-${user.id}-user-name" placeholder="Enter your Name"/>
      <input value="${user.avatar}" class="edit-${user.id}-user-avatar" placeholder="Enter your profile pic url"/>
