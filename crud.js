@@ -30,7 +30,7 @@ async function mock() {
     <div class="edit-user-form edit-${user.id}">
     <input value="${user.name}" class="edit-${user.id}-user-name" placeholder="Enter your Name"/>
      <input value="${user.avatar}" class="edit-${user.id}-user-avatar" placeholder="Enter your profile pic url"/>
-     <button class="btn btn-success" onclick="saveuser(${user.id})">Save</button>
+     <button class="btn btn-success" onclick="saveuser(${user.id})"><i class="far fa-save"></i> Save</button>
     </div>
     </div></div>`;
   });
